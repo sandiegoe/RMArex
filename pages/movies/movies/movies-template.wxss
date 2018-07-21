@@ -1,0 +1,19 @@
+@import "/pages/movies/stars/stars-template.wxss";
+
+.movies-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 55rpx;
+}
+
+.movies-img {
+  width: 200rpx;
+  height: 270rpx;
+}
+
+.movies-title {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  margin-bottom: 16rpx;
+}
+

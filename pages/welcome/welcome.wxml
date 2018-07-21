@@ -1,0 +1,7 @@
+<view class='container' bind:tap='outter'>
+  <image src='/images/avatar.png' class='user-avatar'></image>
+  <text class='user-name'>Hello, 七月</text>
+  <view class='moto-container' bindtap='middle'>
+    <text class='moto' catch:tap="startTrip">开启小程序之旅</text>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+ <import src="post-item/post-item-template.wxml" /> 
+<!-- <import src="/pages/post/post-item/post-item-template.wxml" /> -->
+
+<view>
+  <swiper indicator-dots='true' autoplay='true' current='1' interval='5000' catch:tap="swiperTap">
+    <swiper-item>
+      <image src='/images/wx.png' data-postid="3"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='/images/vr.png' data-postid="4"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='/images/iqiyi.png' data-postid="5"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- <view wx:if="false">goods</view>
+  <view wx:if="true">true</view>
+  <view wx:if="{{false}}">false</view>
+  <view wx:if="{{true}}">true</view>
+  <view wx:if="{{flag}}">flag</view>
+  <view hidden="{{flag ? false : true}}">三目运算符</view>
+  <view>{{a + b}} + {{c}} + d</view>
+  <view wx:if="{{length > 5}}">length > 5</view>
+  <view>{{"hello " + name}}</view>
+  <view>hello     {{name}}</view>
+  <view>{{object.key}} || {{array[0]}}</view> -->
+
+  <block wx:for="{{postList}}" wx:for-item="item" wx:for-index="index">
+    <view bind:tap="toArticleDetail" data-postid='{{index}}'>
+      <template is="post-item" data="{{...item}}"  />
+    </view>
+  </block>
+</view>
