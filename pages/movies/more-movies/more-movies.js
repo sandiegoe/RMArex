@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    movies: [],
+    totalCount: 0
   },
 
   /**
@@ -32,20 +33,41 @@ Page({
       default:
         return;
     }
+    this.setData({
+      url: url
+    });
     util.callAjax(url, null, this.callBack);
+    wx.showNavigationBarLoading();
   },
 
   callBack: function(data) {
     console.info(data);
-    var movies = util.processDoubanData(data);
+    //上一次的加上这一次的movies数据
+    var movies = this.data.movies.concat(util.processDoubanData(data));
     console.info(movies);
+    this.setData({
+      movies: movies
+    });
+    //加载成功 记录数加上20
+    this.data.totalCount = this.data.totalCount + 20;
+    //关闭loading
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
+
+  // loadMore: function(){
+  //   console.info("loadMore....");
+  //   var totalCount = this.data.totalCount;
+  //   var url = this.data.url + "?start=" + totalCount + "&count=20";
+  //   util.callAjax(url, null, this.callBack);
+  //   //loading
+  //   wx.showNavigationBarLoading();
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
@@ -76,14 +98,24 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    console.info("pulldown....");
+    var url = this.data.url + "?start=0&count=20";
+    this.data.movies = [];
+    this.data.totalCount = 0;
+    util.callAjax(url, null, this.callBack);
+    wx.showNavigationBarLoading();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    console.info("loadMore....");
+    var totalCount = this.data.totalCount;
+    var url = this.data.url + "?start=" + totalCount + "&count=20";
+    util.callAjax(url, null, this.callBack);
+    //loading
+    wx.showNavigationBarLoading();
   },
 
   /**

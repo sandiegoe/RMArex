@@ -15,6 +15,9 @@ function processDoubanData(data) {
   var movies = [];
   for (var idx in data.subjects) {
     var movie = data.subjects[idx];
+    if (movie.title.length > 6) {
+      movie.title = movie.title.substring(0, 6) + "...";
+    }
     movies.push({
       image: movie.images.large,
       average: movie.rating.average,
