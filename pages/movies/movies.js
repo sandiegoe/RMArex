@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    containerPanelShow: true,
+    searchPanelShow: false
   },
 
   /**
@@ -21,6 +22,31 @@ Page({
     this.getRequestData(inTheatersUrl, 'inTheaters', '正在热映');
     this.getRequestData(comingSoonUrl, 'comingSoon', '即将上映');
     this.getRequestData(top250Url, 'top250', 'Top250');
+  },
+
+  onBindFocus: function(event) {
+    console.info('onBindFocus');
+    this.setData({
+      containerPanelShow: false,
+      searchPanelShow: true
+    });
+  },
+
+  onCancelSearchTab: function(event) {
+    console.info('onCalcelSearchTab...');
+    this.setData({
+      containerPanelShow: true,
+      searchPanelShow: false
+    });
+  },
+
+  onBindChange: function(event) {
+    console.info('onBindChange');
+    this.setData({
+      containerPanelShow: true,
+      searchPanelShow: false,
+      searchContent: ''
+    });
   },
 
   moreMovies: function(event) {

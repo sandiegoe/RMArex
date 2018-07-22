@@ -1,6 +1,13 @@
 <import src="/pages/movies/movieslist/movieslist-template.wxml" />
+<import src="/pages/movies/moviesgrid/moviesgrid-template.wxml" />
 
-<view>
+<view class="search">
+  <icon class="search-img" type="search" size='13' color='#1F4BA5'/>
+  <input class="search-input" type='text' placeholder='我不是药神，邪不压正' placeholder-class='placeholder' bind:focus='onBindFocus' bind:change="onBindChange" value="{{searchContent}}"/>
+  <image src='/images/icon/xx.png' class='xx-img' wx:if="{{searchPanelShow}}" catch:tap="onCancelSearchTab"/>
+</view>
+
+<view wx:if="{{containerPanelShow}}">
   <view class="movie-list-container">
     <template is="movieslist-template" data="{{...inTheaters}}"></template>
   </view>
@@ -10,4 +17,8 @@
   <view class="movie-list-container">
     <template is="movieslist-template" data="{{...top250}}"></template>
   </view>
+</view>
+
+<view class="searchpanel" wx:if="{{searchPanelShow}}">
+  <template is="moviesgrid-template" />
 </view>

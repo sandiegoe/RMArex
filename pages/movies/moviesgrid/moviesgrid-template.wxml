@@ -1,6 +1,7 @@
 <import src="/pages/movies/movies/movies-template.wxml" />
 
 <template name="moviesgrid-template">
+  <text>tesfsdfsdf</text>
   <view class="moviesgrid-container">
     <block wx:for="{{movies}}" wx:for-item="movie" wx:for-index="index">
       <view class="single-movie">
