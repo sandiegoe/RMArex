@@ -5,7 +5,7 @@
     <view class='inner-container'>
       <view class='head'>
         <text class='slagon'>{{categoryName}}</text>
-        <view class='more'>
+        <view class='more' bind:tap="moreMovies" data-category="{{categoryName}}">
           <text class='more-txt'>更多</text>
           <image class="more-img" src='/images/icon/arrow-right.png'></image>
         </view>

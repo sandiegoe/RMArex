@@ -1,3 +1,4 @@
+var util = require("../../utils/util.js");
 var app = getApp();
 
 Page({
@@ -6,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    
   },
 
   /**
@@ -22,6 +23,13 @@ Page({
     this.getRequestData(top250Url, 'top250', 'Top250');
   },
 
+  moreMovies: function(event) {
+    var category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: '/pages/movies/more-movies/more-movies?category=' + category,
+    });
+  },
+
   getRequestData: function(url, selectedKey, categoryName) {
     var that = this;
     wx.request({
@@ -32,7 +40,7 @@ Page({
       },
       success: function (res) {
         console.info(res);
-        var movies = that.processDoubanData(res.data);
+        var movies = util.processDoubanData(res.data);
         var data = {};
         data[selectedKey] = {
           movies: movies,
@@ -42,36 +50,7 @@ Page({
       }
     })
   },
-
-  processDoubanData: function(data) {
-    var movies = [];
-    for (var idx in data.subjects) {
-      var movie = data.subjects[idx];
-      movies.push({
-        image: movie.images.large,
-        average: movie.rating.average,
-        title: movie.title,
-        stars: this.processMovieStars(movie.rating.stars)
-      });
-    }
-    console.info(movies);
-    return movies;
-  },
-
-  processMovieStars: function(stars) {
-    var starsArray = [];
-    //stars = parseInt(stars);
-    stars = stars.substring(0, 1);
-    for (var i=1; i<=5; ++i) {
-      if (i <= stars) {
-        starsArray.push(1);
-      } else {
-        starsArray.push(0);
-      }
-    }
-    return starsArray;
-  },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
