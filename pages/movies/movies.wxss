@@ -36,3 +36,8 @@
   height: 30rpx;
   margin: auto 10rpx auto 10rpx;
 }
+
+.searchpanel {
+   margin: 30rpx auto 20rpx 33rpx;
+   height: 1300rpx;
+}

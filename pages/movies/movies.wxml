@@ -3,7 +3,7 @@
 
 <view class="search">
   <icon class="search-img" type="search" size='13' color='#1F4BA5'/>
-  <input class="search-input" type='text' placeholder='我不是药神，邪不压正' placeholder-class='placeholder' bind:focus='onBindFocus' bind:change="onBindChange" value="{{searchContent}}"/>
+  <input class="search-input" type='text' placeholder='我不是药神，邪不压正' placeholder-class='placeholder' bind:focus='onBindFocus' bind:change="onBindChange" />
   <image src='/images/icon/xx.png' class='xx-img' wx:if="{{searchPanelShow}}" catch:tap="onCancelSearchTab"/>
 </view>
 
@@ -20,5 +20,5 @@
 </view>
 
 <view class="searchpanel" wx:if="{{searchPanelShow}}">
-  <template is="moviesgrid-template" />
+  <template is="moviesgrid-template" data="{{...searchMovies}}"/>
 </view>
