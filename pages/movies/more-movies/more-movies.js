@@ -40,6 +40,18 @@ Page({
     wx.showNavigationBarLoading();
   },
 
+  toMovieDetail: function (event) {
+    var movieId = event.currentTarget.dataset.id;
+    console.info(movieId);
+    if (movieId) {
+      wx.navigateTo({
+        url: '/pages/movies/movies-detail/detail?id=' + movieId,
+      })
+    } else {
+      console.info("toMovieDetail fail[blank movieId]....");
+    }
+  },
+
   callBack: function(data) {
     console.info(data);
     //上一次的加上这一次的movies数据
