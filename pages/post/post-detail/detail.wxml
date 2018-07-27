@@ -1,6 +1,6 @@
 <view class='container'>
   <image class='head-image' src='{{isPlayingAudio ? detail.music.coverImg : detail.headImage}}'></image>
-  <image catch:tap="playingAudioTab" class='audio' src='{{isPlayingAudio ? "/images/music/music-stop.png" : "/images/music/music-start.png"}}'></image>
+  <image catch:tap="playingAudioTap" class='audio' src='{{isPlayingAudio ? "/images/music/music-stop.png" : "/images/music/music-start.png"}}'></image>
   <view class='avatar-date'>
     <image class='avatar' src='{{detail.avatar}}'></image>
     <text class='auther'>{{detail.auther}}</text>

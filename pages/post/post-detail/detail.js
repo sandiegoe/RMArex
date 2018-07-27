@@ -105,7 +105,7 @@ Page({
     })
   },
 
-  playingAudioTab: function(event) {
+  playingAudioTap: function(event) {
     var postId = this.data.currentPostId; 
     var detail = postData.postList[postId];
     var that = this;
@@ -147,6 +147,12 @@ Page({
       app.globalData.g_isPlayingAudio = true;
     });
     wx.onBackgroundAudioPause(function(){
+      that.setData({
+        isPlayingAudio: false
+      });
+      app.globalData.g_isPlayingAudio = false;
+    });
+    wx.onBackgroundAudioStop(function(){
       that.setData({
         isPlayingAudio: false
       });
