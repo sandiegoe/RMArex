@@ -1,0 +1,72 @@
+<import src='/pages/movies/stars/stars-template.wxml' />
+
+<view class='container'>
+  <image class='head-img' src='https://img3.doubanio.com/view/photo/l/public/p648365452.webp' mode='aspectFill'></image>
+  <view class='head-img-hover'>
+    <text class='title'>大话西游之大圣娶亲</text>
+    <text class='countryyear'>香港 1995</text>
+    <view class='like'>
+      <text class='wish_count'>19575</text>
+      <text class='normal'>人想看</text>
+      <text class='reviews_count'>75351</text>
+      <text class='normal'>条评论</text>
+    </view>
+  </view>
+  <image class='movie-img' src='https://img3.doubanio.com/view/photo/l/public/p648365452.webp'></image>
+  <view class='movieinfo-container'>
+    <text class='original_title'>西遊記大結局之仙履奇緣</text>
+    <view class='stars'>
+      <text class='typename'>评分</text>
+      <template is='stars-template'></template>
+    </view>
+    <view class='unit'>
+      <text class='typename'>导演</text>
+      <text>刘镇伟</text>
+    </view>
+    <view class='unit'>
+      <text class='typename'>主演</text>
+      <text>周星驰 / 吴孟达 / 朱茵 / 蔡少芬 / 蓝洁瑛 </text>
+    </view>
+    <view class='unit'>
+      <text class='typename'>类型</text>
+      <text>喜剧 / 爱情 / 奇幻 / 冒险</text>
+    </view>
+  </view>
+  <view class='hr'></view>
+  <view class='summary-container'>
+    <text class='summary-title'>剧情简介</text>
+    <text class='summary'>至尊宝（周星驰 饰）被月光宝盒带回到五百年前，遇见紫霞仙子（朱茵 饰），被对方打上烙印成为对方的人，并发觉自己已变成孙悟空。 
+　　紫霞与青霞（朱茵 饰）本是如来佛祖座前日月神灯的灯芯（白天是紫霞，晚上是青霞），二人虽然同一肉身却仇恨颇深，因此紫霞立下誓言，谁能拔出她手中的紫青宝剑，谁就是她的意中人。紫青宝剑被至尊宝于不经意间拔出，紫霞决定以身相许，却遭一心记挂白晶晶（莫文蔚 饰）的至尊宝拒绝。后牛魔王救下迷失在沙漠中的紫霞，并逼紫霞与他成婚，关键时刻，至尊宝现身。
+    </text>
+  </view>
+  <view class='hr2'></view>
+  <view class='castinfo-container'>
+    <text class='castinfo-title'>影人</text>
+    <scroll-view class='castinfo' scroll-x="true">
+      <view class='cast-item'>
+        <image class='cast-img' src='https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p47421.webp'></image>
+        <text class='cast-name'>周星驰周星驰周星驰</text>
+      </view>
+      <view class='cast-item'>
+        <image class='cast-img' src='https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p47421.webp'></image>
+        <text class='cast-name'>周星驰</text>
+      </view>
+      <view class='cast-item'>
+        <image class='cast-img' src='https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p47421.webp'></image>
+        <text class='cast-name'>周星驰</text>
+      </view>
+      <view class='cast-item'>
+        <image class='cast-img' src='https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p47421.webp'></image>
+        <text class='cast-name'>周星驰</text>
+      </view>
+      <view class='cast-item'>
+        <image class='cast-img' src='https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p47421.webp'></image>
+        <text class='cast-name'>周星驰</text>
+      </view>
+      <view class='cast-item'>
+        <image class='cast-img' src='https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p47421.webp'></image>
+        <text class='cast-name'>周星驰</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>
