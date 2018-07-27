@@ -1,7 +1,7 @@
 <import src="/pages/movies/stars/stars-template.wxml" />
 
 <template name="movies-template">
-  <view class='movies-container'>
+  <view class='movies-container' catchtap='toMovieDetail' data-id="{{id}}">
     <image class="movies-img" src="{{image}}"></image>
     <text class='movies-title'>{{title}}</text>
     <template is="stars-template" data="{{stars: stars, average: average}}"></template>

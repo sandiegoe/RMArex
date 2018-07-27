@@ -32,6 +32,18 @@ Page({
     this.getRequestData(this.data.top250Url, 'top250', 'Top250');
   },
 
+  toMovieDetail: function(event) {
+    var movieId = event.currentTarget.dataset.id;
+    console.info(movieId);
+    if (movieId) {
+      wx.navigateTo({
+        url: '/pages/movies/movies-detail/detail?id=' + movieId,
+      })
+    } else {
+      console.info("toMovieDetail fail[blank movieId]....");
+    }
+  },
+
   onBindFocus: function(event) {
     console.info('onBindFocus');
     this.setData({

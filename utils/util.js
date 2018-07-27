@@ -19,6 +19,7 @@ function processDoubanData(data) {
       movie.title = movie.title.substring(0, 6) + "...";
     }
     movies.push({
+      id: movie.id,
       image: movie.images.large,
       average: movie.rating.average,
       title: movie.title,
@@ -44,5 +45,6 @@ function processMovieStars(stars) {
 
 module.exports = {
   callAjax: callAjax,
-  processDoubanData: processDoubanData
+  processDoubanData: processDoubanData,
+  processMovieStars: processMovieStars
 }

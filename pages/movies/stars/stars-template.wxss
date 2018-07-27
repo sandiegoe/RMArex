@@ -6,7 +6,7 @@
 .stars {
   display: flex;
   flex-direction: row;
-  margin: 10rpx 22rpx auto 3rpx;
+  margin: 4rpx 22rpx auto 3rpx;
   line-height: 17rpx;
 }
 
