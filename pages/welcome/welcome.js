@@ -1,10 +1,14 @@
+const app =  getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   startTrip: function(event) {
@@ -40,7 +44,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      });
+    } else if (this.data.canIUse) {
+      app.userInfoReadyCallback  = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        });
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo;
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
+  },
+
+  getUserInfo: function(event) {
+    console.info("event");
+    app.globalData.userInfo = event.detail.userInfo;
+    this.setData({
+      userInfo: event.detail.userInfo,
+      hasUserInfo: true
+    });
   },
 
   /**

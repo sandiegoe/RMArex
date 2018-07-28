@@ -3,34 +3,66 @@ App({
   globalData: {
     g_isPlayingAudio: false,
     g_currentPostId: null,
-    g_doubanBase: 'https://douban.uieee.com'
+    g_doubanBase: 'https://douban.uieee.com',
+    userInfo: null
   },
 
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function() {
+    // 登录
+    // 自有系统的登陆逻辑  
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.info('wx.login.....');
+      }
+    })
 
+    // 获取用户信息
+    // 不管有没有登陆自有系统，只要用户授权过就可以获取用户的基本信息
+    wx.getSetting({
+      success: res => {
+        console.info("setting: " + res);
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              console.info("userInfo: " + res);
+              // 可以将 res 发送给后台解码出 unionId
+              this.globalData.userInfo = res.userInfo
+
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              if (this.userInfoReadyCallback) {
+                this.userInfoReadyCallback(res)
+              }
+            }
+          })
+        }
+      }
+    })
   },
 
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
-  onShow: function (options) {
+  onShow: function(options) {
 
   },
 
   /**
    * 当小程序从前台进入后台，会触发 onHide
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
    */
-  onError: function (msg) {
+  onError: function(msg) {
 
   }
 })

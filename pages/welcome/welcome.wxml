@@ -1,6 +1,10 @@
 <view class='container' bind:tap='outter'>
-  <image src='/images/avatar.png' class='user-avatar'></image>
-  <text class='user-name'>Hello, 七月</text>
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type='getUserInfo' bindgetuserinfo='getUserInfo' class='userinfobtn'>
+  点击授权</button>
+  <block wx:else>
+    <image src='{{userInfo.avatarUrl}}' class='user-avatar'></image>
+    <text class='user-name'>Hello, {{userInfo.nickName}}</text>
+  </block>
   <view class='moto-container' bindtap='middle'>
     <text class='moto' catch:tap="startTrip">开启小程序之旅</text>
   </view>
